@@ -58,6 +58,33 @@ docker build -t crypto-signal-bot .
 docker run -p 8000:8000 crypto-signal-bot
 ```
 
+### Railway Deployment (Önerilen)
+
+```bash
+# Railway CLI yükle
+npm install -g @railway/cli
+
+# Railway'e giriş yap
+railway login
+
+# Yeni proje oluştur
+railway init
+
+# Environment variables ekle
+railway variables set TELEGRAM_TOKEN=your_token
+railway variables set TELEGRAM_CHAT_ID=your_chat_id
+railway variables set BOT_OWNER_ID=your_user_id
+railway variables set MONGODB_URI=your_mongodb_uri
+railway variables set MONGODB_DB=crypto_signal_bot
+railway variables set MONGODB_COLLECTION=allowed_users
+
+# Deploy et
+railway up
+
+# Logları izle
+railway logs
+```
+
 ### Heroku Deployment
 
 ```bash
@@ -108,6 +135,15 @@ git push heroku main
 - **Teknik Analiz**: TA-Lib (ta)
 - **Veri Kaynağı**: Binance Futures API
 
+## Railway Özel Ayarları
+
+Railway'de deployment yaparken:
+
+1. **Nixpacks Builder**: Otomatik olarak Python 3.11'i algılar
+2. **Health Check**: Port 8000'de web sunucusu çalışır
+3. **Auto Restart**: Hata durumunda otomatik yeniden başlatma
+4. **Environment Variables**: Railway dashboard'dan kolayca ayarlanır
+
 ## Sorun Giderme
 
 ### Container Hataları
@@ -117,6 +153,12 @@ Eğer Docker container'da "command not found" hatası alıyorsanız:
 1. `start.sh` script'inin çalıştırılabilir olduğundan emin olun
 2. Python komutunun PATH'te olduğunu kontrol edin
 3. `Procfile` dosyasının doğru formatta olduğunu kontrol edin
+
+### Railway Hataları
+
+1. **Build Hatası**: `nixpacks.toml` dosyasını kontrol edin
+2. **Start Hatası**: `railway.json` startCommand'ı kontrol edin
+3. **Environment Variables**: Railway dashboard'dan tüm değişkenlerin ayarlandığından emin olun
 
 ### MongoDB Bağlantı Sorunları
 
