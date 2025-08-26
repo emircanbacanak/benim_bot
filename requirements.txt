@@ -1,0 +1,10 @@
+python-telegram-bot
+pandas
+numpy
+requests
+pymongo
+python-dotenv
+aiohttp
+websockets
+ta
+python-binance
