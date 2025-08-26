@@ -1,0 +1,44 @@
+{
+  "name": "Kripto Sinyal Botu",
+  "description": "Binance Futures için otomatik kripto sinyal botu",
+  "repository": "https://github.com/yourusername/crypto-signal-bot",
+  "logo": "https://node-js-sample.herokuapp.com/node.png",
+  "keywords": ["python", "crypto", "trading", "bot", "telegram"],
+  "env": {
+    "TELEGRAM_TOKEN": {
+      "description": "Telegram Bot Token",
+      "required": true
+    },
+    "TELEGRAM_CHAT_ID": {
+      "description": "Telegram Chat ID",
+      "required": true
+    },
+    "BOT_OWNER_ID": {
+      "description": "Bot Owner User ID",
+      "required": true
+    },
+    "MONGODB_URI": {
+      "description": "MongoDB Connection String",
+      "required": true
+    },
+    "MONGODB_DB": {
+      "description": "MongoDB Database Name",
+      "value": "crypto_signal_bot"
+    },
+    "MONGODB_COLLECTION": {
+      "description": "MongoDB Collection Name",
+      "value": "allowed_users"
+    }
+  },
+  "buildpacks": [
+    {
+      "url": "heroku/python"
+    }
+  ],
+  "formation": {
+    "worker": {
+      "quantity": 1,
+      "size": "basic"
+    }
+  }
+}
