@@ -1,0 +1,1 @@
+worker: python crypto_signal_v2.py 
